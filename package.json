@@ -1,0 +1,21 @@
+{
+  "name": "recipe-app",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "docker compose up --build --force-recreate --renew-anon-volumes",
+    "dev:local": "concurrently -k -n web,api \"npm run dev --workspace @recipe-app/web\" \"npm run start:dev --workspace @recipe-app/api\"",
+    "build": "npm run build --workspace @recipe-app/web && npm run build --workspace @recipe-app/api",
+    "dev:web": "npm run dev --workspace @recipe-app/web",
+    "dev:api": "npm run start:dev --workspace @recipe-app/api",
+    "docker:up": "docker compose up --build --force-recreate --renew-anon-volumes -d",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs --follow --tail=100"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
