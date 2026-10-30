@@ -19,6 +19,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
+      secrets:
+        - npmrc
     command: npm run start:dev --workspace @recipe-app/api
     environment:
       API_PORT: 3000
@@ -32,7 +34,7 @@ services:
       - "3000:3000"
     volumes:
       - .:/app
-      - node_modules:/app/node_modules
+      - /app/node_modules
     depends_on:
       postgres:
         condition: service_healthy
@@ -41,6 +43,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
+      secrets:
+        - npmrc
     command: npm run dev --workspace @recipe-app/web
     environment:
       VITE_API_PROXY_TARGET: http://api:3000
@@ -48,10 +52,13 @@ services:
       - "5173:5173"
     volumes:
       - .:/app
-      - node_modules:/app/node_modules
+      - /app/node_modules
     depends_on:
       - api
 
 volumes:
   postgres_data:
-  node_modules:
+
+secrets:
+  npmrc:
+    environment: GITHUB_NPMRC
