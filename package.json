@@ -13,9 +13,12 @@
     "dev:api": "npm run start:dev --workspace @recipe-app/api",
     "docker:up": "docker compose up --build --force-recreate --renew-anon-volumes -d",
     "docker:down": "docker compose down",
-    "docker:logs": "docker compose logs --follow --tail=100"
+    "docker:logs": "docker compose logs --follow --tail=100",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
-    "concurrently": "^9.2.1"
+    "concurrently": "^9.2.1",
+    "prettier": "^3.9.10"
   }
 }
