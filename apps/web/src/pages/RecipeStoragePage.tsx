@@ -1,4 +1,5 @@
 import { useEffect, useState, type FormEvent } from 'react';
+import Button from '../components/ui/Button/Button';
 import ExpansionPanel from '../components/ui/ExpansionPanel/ExpansionPanel';
 import './recipe-storage-page.css';
 
@@ -12,18 +13,18 @@ const MOCK_RECIPE_GROUPS: RecipeGroup[] = [
   {
     id: 'favorites',
     name: 'Favorites',
-    recipes: ['Lemon herb chicken', 'Crispy chickpea grain bowl'],
+    recipes: ['Lemon herb chicken', 'Crispy chickpea grain bowl']
   },
   {
     id: 'weeknight',
     name: 'Weeknight dinners',
-    recipes: ['Creamy tomato pasta', 'Coconut curry soup'],
+    recipes: ['Creamy tomato pasta', 'Coconut curry soup']
   },
   {
     id: 'desserts',
     name: 'Desserts',
-    recipes: ['Berry yogurt parfait'],
-  },
+    recipes: ['Berry yogurt parfait']
+  }
 ];
 
 function RecipeStoragePage() {
@@ -36,9 +37,7 @@ function RecipeStoragePage() {
   useEffect(() => {
     const timer = window.setTimeout(() => {
       setRecipeGroups(MOCK_RECIPE_GROUPS);
-      setExpandedGroups(
-        Object.fromEntries(MOCK_RECIPE_GROUPS.map((group) => [group.id, true])),
-      );
+      setExpandedGroups(Object.fromEntries(MOCK_RECIPE_GROUPS.map((group) => [group.id, true])));
       setIsLoading(false);
     }, 150);
 
@@ -61,13 +60,13 @@ function RecipeStoragePage() {
       {
         id: newGroupId,
         name: trimmedName,
-        recipes: [],
+        recipes: []
       },
-      ...currentGroups,
+      ...currentGroups
     ]);
     setExpandedGroups((currentExpandedGroups) => ({
       ...currentExpandedGroups,
-      [newGroupId]: true,
+      [newGroupId]: true
     }));
     setGroupName('');
     setIsGroupDialogOpen(false);
@@ -76,7 +75,7 @@ function RecipeStoragePage() {
   const toggleGroup = (groupId: string) => {
     setExpandedGroups((currentExpandedGroups) => ({
       ...currentExpandedGroups,
-      [groupId]: !(currentExpandedGroups[groupId] ?? true),
+      [groupId]: !(currentExpandedGroups[groupId] ?? true)
     }));
   };
 
@@ -89,16 +88,12 @@ function RecipeStoragePage() {
         </div>
 
         <div className="recipe-storage-actions">
-          <button className="secondary-button" type="button" aria-label="Add a new recipe" disabled>
+          <Button variant="secondary" type="button" aria-label="Add a new recipe" disabled>
             Add recipe
-          </button>
-          <button
-            className="primary-button"
-            type="button"
-            onClick={() => setIsGroupDialogOpen(true)}
-          >
+          </Button>
+          <Button type="button" onClick={() => setIsGroupDialogOpen(true)}>
             Create group
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -107,12 +102,10 @@ function RecipeStoragePage() {
       ) : !hasSavedRecipes ? (
         <div className="recipe-storage-empty" aria-live="polite">
           <h2>No recipes saved</h2>
-          <p>
-            Start collecting your favorite meals and organize them into groups as you go.
-          </p>
-          <button className="primary-button" type="button" onClick={() => setIsGroupDialogOpen(true)}>
+          <p>Start collecting your favorite meals and organize them into groups as you go.</p>
+          <Button type="button" onClick={() => setIsGroupDialogOpen(true)}>
             Create group
-          </button>
+          </Button>
         </div>
       ) : (
         <div className="recipe-groups" aria-live="polite">
@@ -170,16 +163,10 @@ function RecipeStoragePage() {
               </label>
 
               <div className="recipe-dialog-actions">
-                <button
-                  className="secondary-button"
-                  type="button"
-                  onClick={() => setIsGroupDialogOpen(false)}
-                >
+                <Button variant="text-neutral" type="button" onClick={() => setIsGroupDialogOpen(false)}>
                   Cancel
-                </button>
-                <button className="primary-button" type="submit">
-                  Save group
-                </button>
+                </Button>
+                <Button type="submit">Save group</Button>
               </div>
             </form>
           </div>

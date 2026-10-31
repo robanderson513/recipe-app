@@ -24,40 +24,6 @@
   gap: 0.75rem;
 }
 
-.primary-button,
-.secondary-button,
-.recipe-group-toggle {
-  border: none;
-  border-radius: var(--radius-md, 0.75rem);
-  font: inherit;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.primary-button,
-.secondary-button {
-  padding: 0.8rem 1.1rem;
-  font-weight: 600;
-}
-
-.primary-button {
-  background: var(--color-action-primary-default);
-  color: white;
-  box-shadow: 0 10px 24px rgba(49, 90, 88, 0.18);
-}
-
-.primary-button:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-  box-shadow: none;
-}
-
-.secondary-button {
-  background: var(--color-surface-subtle);
-  color: var(--color-text-primary);
-  border: 1px solid var(--color-border-default);
-}
-
 .recipe-storage-status,
 .recipe-storage-empty p,
 .recipe-list-empty {
