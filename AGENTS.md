@@ -72,8 +72,10 @@ Use these prompts to flag issues during code review:
 
 ## Session mode and approval
 
-- In interactive mode, a direct user request authorizes the requested work; do not ask for approval to do what the user explicitly asked.
+- In interactive mode, a direct user request authorizes the requested work only after the user explicitly confirms the implementation scope and the agent has checked the current task against the repo and the ask.
+- Interactive-mode implementation gate: before writing, editing, deleting, renaming, or otherwise modifying repository files, tests, scripts, dependencies, or generated artifacts, the agent must pause and verify the change with the user or developer. Do not assume the issue text alone is authorization to code.
 - Ask before acting when a consequential choice or scope expansion is not specified. You may gather information and explain options without approval.
-- In auto mode, make reasonable decisions within the requested scope and proceed without pausing for routine approval.
+- In auto mode, the agent does not need explicit approval from the user for routine implementation within the requested scope; it may proceed without pausing for routine approval while staying within the scope of the task.
+- In all modes, implementation should be staged in small, reviewable slices instead of a single monolithic pass. Prefer a minimal route/shell change first, then the feature behavior, then tests and polish as separate incremental steps when needed.
 
 When submitting a PR, review the diff with the same standards above: prefer correctness, consistency, and minimal scope over cleverness.
