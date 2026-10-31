@@ -8,13 +8,9 @@ For repository-specific guidance for AI assistants and code review quality check
 
 Install and start [Docker Desktop](https://docs.docker.com/desktop/setup/install/windows-install/) first. The web app, API, and PostgreSQL all run in containers; you do not need to install Node.js or PostgreSQL to run them with Docker Compose.
 
-The web app uses a private GitHub Packages dependency. Sign in to GitHub Packages once with npm so your user `.npmrc` contains a token with package-read access. Set a user-level environment variable from that config once in PowerShell:
+The web app uses a private GitHub Packages dependency. Sign in to GitHub Packages with npm so your user `.npmrc` contains a token with package-read access. `npm run dev` and `npm run docker:up` automatically pass that user config to Docker Compose as a temporary BuildKit secret; the credential is not copied into the image or repository. If needed, set `GITHUB_NPMRC` to override the user `.npmrc`.
 
-```powershell
-[Environment]::SetEnvironmentVariable("GITHUB_NPMRC", (Get-Content "$env:USERPROFILE\.npmrc" -Raw), "User")
-```
-
-Docker Compose passes it to the build as a temporary BuildKit secret; the credential is not copied into the image or repository. `npm run dev` reads the saved user-level setting itself, so it works in already-open terminals and every worktree without copying credentials. The committed `.npmrc` only selects the package registry.
+The committed `.npmrc` only selects the package registry.
 
 From the repository root, start the stack with:
 
