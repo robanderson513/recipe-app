@@ -20,7 +20,7 @@ body {
 
 .welcome {
   display: grid;
-  min-height: 100vh;
+  min-height: calc(100vh - 8rem);
   align-content: center;
   justify-items: center;
   padding: 2rem;
@@ -69,4 +69,11 @@ h1 {
   height: 0.55rem;
   border-radius: 50%;
   background: var(--color-action-primary-default);
+}
+
+@media (max-width: 767px) {
+  .welcome {
+    min-height: calc(100vh - 10rem - env(safe-area-inset-bottom));
+    padding: 1rem 0;
+  }
 }
