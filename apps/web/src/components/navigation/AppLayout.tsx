@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 import Icon, { IconName } from '../../consts/icons';
 import NavigationLinks from './NavigationLinks';
 import './navigation.css';
@@ -9,9 +10,9 @@ function AppLayout({ children }: { children: ReactNode }) {
   return (
     <div className="app-container">
       <header className="app-header">
-        <a className="brand" href="/" aria-label="Recipe App home">
+        <Link className="brand" to="/" aria-label="Recipe App home">
           Recipe App
-        </a>
+        </Link>
         <button
           className="navigation-toggle"
           type="button"
