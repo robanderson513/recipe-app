@@ -2,6 +2,8 @@
 
 A TypeScript monorepo with a React web app, a NestJS API, and PostgreSQL persistence through TypeORM.
 
+For repository-specific guidance for AI assistants and code review quality checks, see [AGENTS.md](./AGENTS.md).
+
 ## Run everything in Docker
 
 Install and start [Docker Desktop](https://docs.docker.com/desktop/setup/install/windows-install/) first. The web app, API, and PostgreSQL all run in containers; you do not need to install Node.js or PostgreSQL to run them with Docker Compose.
