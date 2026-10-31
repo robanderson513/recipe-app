@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
-import RecipeStoragePage from './components/recipes/RecipeStoragePage';
 import { IconName } from './consts/icons';
+import RecipeStoragePage from './pages/RecipeStoragePage';
 
 type AppRoute = {
   path: string;
