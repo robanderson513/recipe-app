@@ -1,4 +1,5 @@
 import { useEffect, useState, type FormEvent } from 'react';
+import ExpansionPanel from '../components/ui/ExpansionPanel/ExpansionPanel';
 import './recipe-storage-page.css';
 
 type RecipeGroup = {
@@ -119,38 +120,25 @@ function RecipeStoragePage() {
             const isExpanded = expandedGroups[group.id] ?? true;
 
             return (
-              <article className="recipe-group" key={group.id}>
-                <div className="recipe-group-header">
-                  <button
-                    className="recipe-group-toggle"
-                    type="button"
-                    aria-expanded={isExpanded}
-                    aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${group.name}`}
-                    onClick={() => toggleGroup(group.id)}
-                  >
-                    <span className="recipe-group-caret" aria-hidden="true">
-                      {isExpanded ? '▾' : '▸'}
-                    </span>
-                    <span>{group.name}</span>
-                  </button>
-
-                  <span className="recipe-group-count">{group.recipes.length}</span>
-                </div>
-
-                {isExpanded && (
-                  <ul className="recipe-list">
-                    {group.recipes.length > 0 ? (
-                      group.recipes.map((recipe) => (
-                        <li key={recipe} className="recipe-list-item">
-                          {recipe}
-                        </li>
-                      ))
-                    ) : (
-                      <li className="recipe-list-empty">No recipes in this group yet.</li>
-                    )}
-                  </ul>
-                )}
-              </article>
+              <ExpansionPanel
+                key={group.id}
+                title={group.name}
+                expanded={isExpanded}
+                onToggle={() => toggleGroup(group.id)}
+                headerAdornment={<span className="recipe-group-count">{group.recipes.length}</span>}
+              >
+                <ul className="recipe-list">
+                  {group.recipes.length > 0 ? (
+                    group.recipes.map((recipe) => (
+                      <li key={recipe} className="recipe-list-item">
+                        {recipe}
+                      </li>
+                    ))
+                  ) : (
+                    <li className="recipe-list-empty">No recipes in this group yet.</li>
+                  )}
+                </ul>
+              </ExpansionPanel>
             );
           })}
         </div>

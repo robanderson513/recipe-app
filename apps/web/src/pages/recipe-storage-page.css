@@ -86,39 +86,6 @@
   gap: 1rem;
 }
 
-.recipe-group {
-  border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-lg, 1.25rem);
-  background: var(--color-surface-default);
-  overflow: hidden;
-}
-
-.recipe-group-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1rem 1.1rem;
-  background: var(--color-surface-subtle);
-}
-
-.recipe-group-toggle {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  background: transparent;
-  color: var(--color-text-primary);
-  padding: 0;
-  text-align: left;
-  font-weight: 600;
-}
-
-.recipe-group-caret {
-  display: inline-block;
-  width: 1.25rem;
-  text-align: center;
-}
-
 .recipe-group-count {
   display: inline-flex;
   align-items: center;
