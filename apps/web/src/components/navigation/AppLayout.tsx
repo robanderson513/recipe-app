@@ -16,7 +16,6 @@ function AppLayout({ children }: { children: ReactNode }) {
         </Link>
         <Button
           variant="icon"
-          type="button"
           aria-controls="desktop-navigation-panel"
           aria-expanded={isNavigationOpen}
           aria-label={isNavigationOpen ? 'Close navigation' : 'Open navigation'}

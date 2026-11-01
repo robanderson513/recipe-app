@@ -1,17 +1,16 @@
-import { useId, type ReactNode } from 'react';
+import { useId, useState, type ReactNode } from 'react';
 import Icon, { IconName } from '../../../consts/icons';
 import './expansion-panel.css';
 
 type ExpansionPanelProps = {
   title: string;
-  expanded: boolean;
-  onToggle: () => void;
   headerAdornment?: ReactNode;
   children: ReactNode;
 };
 
-function ExpansionPanel({ title, expanded, onToggle, headerAdornment, children }: ExpansionPanelProps) {
+function ExpansionPanel({ title, headerAdornment, children }: ExpansionPanelProps) {
   const contentId = useId();
+  const [isExpanded, setIsExpanded] = useState(true);
 
   return (
     <section className="expansion-panel border rounded-card bg-surface-default">
@@ -20,12 +19,12 @@ function ExpansionPanel({ title, expanded, onToggle, headerAdornment, children }
           <button
             className="expansion-panel-toggle flex items-center gap-tight border-none focus-ring font-body font-weight-strong"
             type="button"
-            aria-expanded={expanded}
+            aria-expanded={isExpanded}
             aria-controls={contentId}
-            onClick={onToggle}
+            onClick={() => setIsExpanded((currentExpanded) => !currentExpanded)}
           >
             <Icon
-              className={`expansion-panel-icon${expanded ? ' is-expanded' : ''}`}
+              className={`expansion-panel-icon${isExpanded ? ' is-expanded' : ''}`}
               name={IconName.ExpandMore}
               size="small"
             />
@@ -34,7 +33,7 @@ function ExpansionPanel({ title, expanded, onToggle, headerAdornment, children }
         </h2>
         {headerAdornment}
       </div>
-      <div className="expansion-panel-content" id={contentId} hidden={!expanded}>
+      <div className="expansion-panel-content" id={contentId} hidden={!isExpanded}>
         {children}
       </div>
     </section>

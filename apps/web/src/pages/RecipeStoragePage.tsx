@@ -29,7 +29,6 @@ const MOCK_RECIPE_GROUPS: RecipeGroup[] = [
 
 function RecipeStoragePage() {
   const [recipeGroups, setRecipeGroups] = useState<RecipeGroup[]>([]);
-  const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>({});
   const [groupName, setGroupName] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [isGroupDialogOpen, setIsGroupDialogOpen] = useState(false);
@@ -37,7 +36,6 @@ function RecipeStoragePage() {
   useEffect(() => {
     const timer = window.setTimeout(() => {
       setRecipeGroups(MOCK_RECIPE_GROUPS);
-      setExpandedGroups(Object.fromEntries(MOCK_RECIPE_GROUPS.map((group) => [group.id, true])));
       setIsLoading(false);
     }, 150);
 
@@ -64,19 +62,8 @@ function RecipeStoragePage() {
       },
       ...currentGroups
     ]);
-    setExpandedGroups((currentExpandedGroups) => ({
-      ...currentExpandedGroups,
-      [newGroupId]: true
-    }));
     setGroupName('');
     setIsGroupDialogOpen(false);
-  };
-
-  const toggleGroup = (groupId: string) => {
-    setExpandedGroups((currentExpandedGroups) => ({
-      ...currentExpandedGroups,
-      [groupId]: !(currentExpandedGroups[groupId] ?? true)
-    }));
   };
 
   return (
@@ -88,12 +75,10 @@ function RecipeStoragePage() {
         </div>
 
         <div className="recipe-storage-actions">
-          <Button variant="secondary" type="button" aria-label="Add a new recipe" disabled>
+          <Button variant="secondary" aria-label="Add a new recipe" disabled>
             Add recipe
           </Button>
-          <Button type="button" onClick={() => setIsGroupDialogOpen(true)}>
-            Create group
-          </Button>
+          <Button onClick={() => setIsGroupDialogOpen(true)}>Create group</Button>
         </div>
       </div>
 
@@ -103,21 +88,15 @@ function RecipeStoragePage() {
         <div className="recipe-storage-empty" aria-live="polite">
           <h2>No recipes saved</h2>
           <p>Start collecting your favorite meals and organize them into groups as you go.</p>
-          <Button type="button" onClick={() => setIsGroupDialogOpen(true)}>
-            Create group
-          </Button>
+          <Button onClick={() => setIsGroupDialogOpen(true)}>Create group</Button>
         </div>
       ) : (
         <div className="recipe-groups" aria-live="polite">
           {recipeGroups.map((group) => {
-            const isExpanded = expandedGroups[group.id] ?? true;
-
             return (
               <ExpansionPanel
                 key={group.id}
                 title={group.name}
-                expanded={isExpanded}
-                onToggle={() => toggleGroup(group.id)}
                 headerAdornment={<span className="recipe-group-count">{group.recipes.length}</span>}
               >
                 <ul className="recipe-list">
@@ -163,7 +142,7 @@ function RecipeStoragePage() {
               </label>
 
               <div className="recipe-dialog-actions">
-                <Button variant="text-neutral" type="button" onClick={() => setIsGroupDialogOpen(false)}>
+                <Button variant="text-neutral" onClick={() => setIsGroupDialogOpen(false)}>
                   Cancel
                 </Button>
                 <Button type="submit">Save group</Button>
