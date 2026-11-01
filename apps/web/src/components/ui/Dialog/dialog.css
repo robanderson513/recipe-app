@@ -1,7 +1,7 @@
 .dialog-backdrop {
   position: fixed;
   inset: 0;
-  z-index: 10;
+  z-index: 1000;
   display: grid;
   place-items: center;
   background: rgba(15, 23, 42, 0.45);
@@ -9,21 +9,48 @@
 }
 
 .dialog {
-  width: min(30rem, 100%);
+  width: 100%;
+  max-height: 90dvh;
+  display: flex;
+  flex-direction: column;
   border: 1px solid var(--color-border-default);
   border-radius: var(--radius-overlay);
   background: var(--color-surface-default);
   box-shadow: var(--shadow-lg);
-  padding: var(--spacing-padding-card);
-}
 
-.dialog h2 {
-  margin: 0 0 var(--spacing-margin-element);
-}
+  &.dialog-small {
+    max-width: 400px;
+  }
 
-.dialog-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: var(--spacing-gap-tight);
-  margin-top: var(--spacing-margin-element);
+  &.dialog-medium {
+    max-width: 560px;
+  }
+
+  &.dialog-large {
+    max-width: 760px;
+  }
+
+  &.dialog-extra-large {
+    max-width: 960px;
+  }
+
+  > h2 {
+    padding: var(--spacing-padding-card);
+    border-bottom: 1px solid var(--color-border-default);
+  }
+
+  > .dialog-content {
+    padding: var(--spacing-padding-card);
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  > .dialog-actions {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: flex-end;
+    gap: var(--spacing-gap-tight);
+    padding: var(--spacing-padding-card);
+    border-top: 1px solid var(--color-border-default);
+  }
 }
