@@ -73,7 +73,7 @@ function RecipeListPage() {
           <h1 className="text-display font-heading font-weight-emphasis">Saved recipes</h1>
         </div>
 
-        <div className="recipe-list-actions flex flex-wrap justify-end gap-compact">
+        <div className="flex flex-wrap justify-end gap-compact">
           <Button variant="secondary" aria-label="Add a new recipe" disabled>
             Add recipe
           </Button>
@@ -107,7 +107,7 @@ function RecipeListPage() {
                   </span>
                 }
               >
-                <ul className="recipe-list flex flex-col gap-compact p-control">
+                <ul className="flex flex-col gap-compact p-control">
                   {group.recipes.length > 0 ? (
                     group.recipes.map((recipe) => (
                       <li key={recipe} className="border rounded-control bg-surface-default p-control">
