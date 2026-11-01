@@ -15,7 +15,11 @@ This repository is a TypeScript monorepo for a recipe application with a React w
 
 - Keep page-level UI separate from shared application shell concerns.
 - Prefer small, focused React components over broad abstraction.
-- Reuse the existing patterns and design-system package instead of introducing new styling systems or custom CSS frameworks.
+- Put reusable UI primitives in `apps/web/src/components/ui`; keep feature-specific compositions with their feature or page.
+- Reuse the existing patterns and design-system package instead of introducing new styling systems or custom CSS frameworks. Prefer its utility classes for common layout and spacing (such as flex, gaps, and padding) before writing equivalent component CSS.
+- On an element, use either design-system utility classes or a feature/component-specific CSS class, not both. Use utilities while the element needs only standard utility styling; once it needs a specific class, put all of that element's styling in the specific class and use design-system tokens there where applicable.
+- Use design-system spacing tokens and utilities for padding, margins, and gaps. Do not invent arbitrary spacing values (for example, `0.3rem`, `0.65rem`, or `0.8rem`); if no existing token fits, explain the need and choose a value deliberately rather than adding an unexplained magic number.
+- Use Material Design as a guideline for UI elements and interaction patterns. Prefer reusable components that fit the existing design system; do not add a Material UI dependency unless explicitly requested.
 - Maintain route-aware navigation and avoid hand-rolled path logic when the project already has React Router patterns available.
 - Keep component logic and styling close to the feature they serve.
 
@@ -72,8 +76,10 @@ Use these prompts to flag issues during code review:
 
 ## Session mode and approval
 
-- In interactive mode, a direct user request authorizes the requested work; do not ask for approval to do what the user explicitly asked.
+- In interactive mode, a direct user request authorizes the requested work only after the user explicitly confirms the implementation scope and the agent has checked the current task against the repo and the ask.
+- Interactive-mode implementation gate: before writing, editing, deleting, renaming, or otherwise modifying repository files, tests, scripts, dependencies, or generated artifacts, the agent must pause and verify the change with the user or developer. Do not assume the issue text alone is authorization to code.
 - Ask before acting when a consequential choice or scope expansion is not specified. You may gather information and explain options without approval.
-- In auto mode, make reasonable decisions within the requested scope and proceed without pausing for routine approval.
+- In auto mode, the agent does not need explicit approval from the user for routine implementation within the requested scope; it may proceed without pausing for routine approval while staying within the scope of the task.
+- In all modes, implementation should be staged in small, reviewable slices instead of a single monolithic pass. Prefer a minimal route/shell change first, then the feature behavior, then tests and polish as separate incremental steps when needed.
 
 When submitting a PR, review the diff with the same standards above: prefer correctness, consistency, and minimal scope over cleverness.

@@ -1,0 +1,12 @@
+.recipe-list-page {
+  height: 100%;
+}
+
+.recipe-list-empty-state {
+  min-height: 19rem;
+}
+
+.recipe-group-count {
+  background: var(--color-action-primary-soft);
+  color: var(--color-action-primary-default);
+}

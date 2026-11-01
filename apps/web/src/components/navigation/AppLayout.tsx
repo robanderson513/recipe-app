@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import Icon, { IconName } from '../../consts/icons';
+import Button from '../ui/Button/Button';
 import NavigationLinks from './NavigationLinks';
 import './navigation.css';
 
@@ -13,16 +14,15 @@ function AppLayout({ children }: { children: ReactNode }) {
         <Link className="brand" to="/" aria-label="Recipe App home">
           Recipe App
         </Link>
-        <button
-          className="navigation-toggle"
-          type="button"
+        <Button
+          variant="icon"
           aria-controls="desktop-navigation-panel"
           aria-expanded={isNavigationOpen}
           aria-label={isNavigationOpen ? 'Close navigation' : 'Open navigation'}
           onClick={() => setIsNavigationOpen((isOpen) => !isOpen)}
         >
-          <Icon name={isNavigationOpen ? IconName.Close : IconName.Menu} size="small" strokeWidth={2} />
-        </button>
+          <Icon name={isNavigationOpen ? IconName.Close : IconName.Menu} />
+        </Button>
       </header>
 
       <div className="content-layout">

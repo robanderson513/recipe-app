@@ -1,0 +1,19 @@
+.expansion-panel {
+  overflow: hidden;
+}
+
+.expansion-panel-heading {
+  margin: 0;
+}
+
+.expansion-panel-toggle {
+  background: transparent;
+  color: var(--color-text-primary);
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+}
+
+.expansion-panel-icon.is-expanded {
+  transform: rotate(180deg);
+}

@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { HealthModule } from './health/health.module';
+import { RecipeGroupsModule } from './recipe-groups/recipe-groups.module';
 
 @Module({
   imports: [
@@ -16,10 +17,11 @@ import { HealthModule } from './health/health.module';
         password: config.getOrThrow<string>('DATABASE_PASSWORD'),
         database: config.getOrThrow<string>('DATABASE_NAME'),
         autoLoadEntities: true,
-        synchronize: false,
-      }),
+        synchronize: true
+      })
     }),
     HealthModule,
-  ],
+    RecipeGroupsModule
+  ]
 })
 export class AppModule {}
