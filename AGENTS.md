@@ -16,7 +16,9 @@ This repository is a TypeScript monorepo for a recipe application with a React w
 - Keep page-level UI separate from shared application shell concerns.
 - Prefer small, focused React components over broad abstraction.
 - Put reusable UI primitives in `apps/web/src/components/ui`; keep feature-specific compositions with their feature or page.
-- Reuse the existing patterns and design-system package instead of introducing new styling systems or custom CSS frameworks.
+- Reuse the existing patterns and design-system package instead of introducing new styling systems or custom CSS frameworks. Prefer its utility classes for common layout and spacing (such as flex, gaps, and padding) before writing equivalent component CSS.
+- On an element, use either design-system utility classes or a feature/component-specific CSS class, not both. Use utilities while the element needs only standard utility styling; once it needs a specific class, put all of that element's styling in the specific class and use design-system tokens there where applicable.
+- Use design-system spacing tokens and utilities for padding, margins, and gaps. Do not invent arbitrary spacing values (for example, `0.3rem`, `0.65rem`, or `0.8rem`); if no existing token fits, explain the need and choose a value deliberately rather than adding an unexplained magic number.
 - Use Material Design as a guideline for UI elements and interaction patterns. Prefer reusable components that fit the existing design system; do not add a Material UI dependency unless explicitly requested.
 - Maintain route-aware navigation and avoid hand-rolled path logic when the project already has React Router patterns available.
 - Keep component logic and styling close to the feature they serve.
