@@ -9,7 +9,7 @@ export class RecipeGroup {
   name!: string;
 
   @Column({ type: 'varchar', length: 500, nullable: true })
-  description!: string;
+  description!: string | null;
 
   @CreateDateColumn({ name: 'created_at', type: 'timestamptz' })
   createdAt!: Date;

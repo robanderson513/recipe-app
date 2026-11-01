@@ -44,17 +44,19 @@ function RecipeListPage() {
 
   const hasSavedRecipes = recipeGroups.some((group) => group.recipes.length > 0);
 
-  const handleCreateGroup = (name: string) => {
-    const newGroupId = `${name.toLowerCase().replace(/\s+/g, '-')}-${Date.now()}`;
+  const handleCreateGroup = async (name: string) => {
+    const response = await fetch('/api/recipe-groups', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name })
+    });
 
-    setRecipeGroups((currentGroups) => [
-      {
-        id: newGroupId,
-        name,
-        recipes: []
-      },
-      ...currentGroups
-    ]);
+    if (!response.ok) {
+      throw new Error('Unable to save the recipe group. Please try again.');
+    }
+
+    const createdGroup: Pick<RecipeGroup, 'id' | 'name'> = await response.json();
+    setRecipeGroups((currentGroups) => [{ ...createdGroup, recipes: [] }, ...currentGroups]);
     setIsGroupDialogOpen(false);
   };
 
