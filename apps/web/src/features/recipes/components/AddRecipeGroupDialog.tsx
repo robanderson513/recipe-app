@@ -1,7 +1,6 @@
 import { useId, useState, type SubmitEvent } from 'react';
 import Button from '../../../components/ui/Button/Button';
 import Dialog from '../../../components/ui/Dialog/Dialog';
-import './add-recipe-group-dialog.css';
 
 type AddRecipeGroupDialogProps = {
   onCancel: () => void;
@@ -38,7 +37,7 @@ function AddRecipeGroupDialog({ onCancel, onSubmit }: AddRecipeGroupDialogProps)
       }
     >
       <form id={formId} onSubmit={handleSubmit}>
-        <label className="recipe-group-dialog-field" htmlFor={nameInputId}>
+        <label htmlFor={nameInputId}>
           <span>Group name</span>
           <input
             id={nameInputId}
@@ -46,7 +45,7 @@ function AddRecipeGroupDialog({ onCancel, onSubmit }: AddRecipeGroupDialogProps)
             type="text"
             value={groupName}
             onChange={(event) => setGroupName(event.target.value)}
-            placeholder="Favorites"
+            placeholder="Ex. Favorites"
             autoFocus
             required
           />
