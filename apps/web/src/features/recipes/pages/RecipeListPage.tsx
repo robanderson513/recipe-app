@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import Button from '../components/ui/Button/Button';
-import ExpansionPanel from '../components/ui/ExpansionPanel/ExpansionPanel';
-import AddRecipeGroupDialog from '../features/recipes/components/AddRecipeGroupDialog';
-import './recipe-storage-page.css';
+import Button from '../../../components/ui/Button/Button';
+import ExpansionPanel from '../../../components/ui/ExpansionPanel/ExpansionPanel';
+import AddRecipeGroupDialog from '../components/AddRecipeGroupDialog';
+import './recipe-list-page.css';
 
 type RecipeGroup = {
   id: string;
@@ -28,7 +28,7 @@ const MOCK_RECIPE_GROUPS: RecipeGroup[] = [
   }
 ];
 
-function RecipeStoragePage() {
+function RecipeListPage() {
   const [recipeGroups, setRecipeGroups] = useState<RecipeGroup[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isGroupDialogOpen, setIsGroupDialogOpen] = useState(false);
@@ -59,14 +59,14 @@ function RecipeStoragePage() {
   };
 
   return (
-    <section className="recipe-storage-page">
-      <div className="recipe-storage-header">
+    <section className="recipe-list-page">
+      <div className="recipe-list-header">
         <div>
           <p className="eyebrow">Your collection</p>
           <h1>Saved recipes</h1>
         </div>
 
-        <div className="recipe-storage-actions">
+        <div className="recipe-list-actions">
           <Button variant="secondary" aria-label="Add a new recipe" disabled>
             Add recipe
           </Button>
@@ -75,9 +75,9 @@ function RecipeStoragePage() {
       </div>
 
       {isLoading ? (
-        <p className="recipe-storage-status">Loading your recipes...</p>
+        <p className="recipe-list-status">Loading your recipes...</p>
       ) : !hasSavedRecipes ? (
-        <div className="recipe-storage-empty" aria-live="polite">
+        <div className="recipe-list-empty-state" aria-live="polite">
           <h2>No recipes saved</h2>
           <p>Start collecting your favorite meals and organize them into groups as you go.</p>
           <Button onClick={() => setIsGroupDialogOpen(true)}>Create group</Button>
@@ -115,4 +115,4 @@ function RecipeStoragePage() {
   );
 }
 
-export default RecipeStoragePage;
+export default RecipeListPage;

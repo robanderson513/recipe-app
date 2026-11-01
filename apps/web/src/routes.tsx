@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { IconName } from './consts/icons';
-import RecipeStoragePage from './pages/RecipeStoragePage';
+import RecipeListPage from './features/recipes/pages/RecipeListPage';
 
 type AppRoute = {
   path: string;
@@ -30,7 +30,7 @@ export const APP_ROUTES = [
   },
   {
     path: '/recipes/*',
-    element: <RecipeStoragePage />,
+    element: <RecipeListPage />,
     navigation: {
       label: 'My Recipes',
       to: '/recipes',

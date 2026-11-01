@@ -1,12 +1,12 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
-import RecipeStoragePage from './RecipeStoragePage';
+import RecipeListPage from './RecipeListPage';
 
-describe('RecipeStoragePage', () => {
+describe('RecipeListPage', () => {
   it('shows a loading state and then displays recipe groups', async () => {
     vi.useFakeTimers();
 
-    render(<RecipeStoragePage />);
+    render(<RecipeListPage />);
 
     expect(screen.getByText('Loading your recipes...')).toBeInTheDocument();
 
@@ -23,7 +23,7 @@ describe('RecipeStoragePage', () => {
   it('creates a new recipe group from the dialog', async () => {
     vi.useFakeTimers();
 
-    render(<RecipeStoragePage />);
+    render(<RecipeListPage />);
     vi.advanceTimersByTime(150);
 
     fireEvent.click(screen.getByRole('button', { name: /create group/i }));
