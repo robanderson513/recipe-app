@@ -85,52 +85,6 @@
   padding: 0.75rem 0;
 }
 
-.recipe-dialog-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  display: grid;
-  place-items: center;
-  background: rgba(15, 23, 42, 0.45);
-  padding: 1rem;
-}
-
-.recipe-dialog {
-  width: min(30rem, 100%);
-  background: white;
-  border-radius: var(--radius-lg, 1.25rem);
-  border: 1px solid var(--color-border-default);
-  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.2);
-  padding: 1.5rem;
-}
-
-.recipe-dialog h2 {
-  margin: 0 0 1rem;
-}
-
-.recipe-dialog-field {
-  display: grid;
-  gap: 0.5rem;
-  font-weight: 600;
-}
-
-.recipe-dialog-field input {
-  width: 100%;
-  border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-md, 0.75rem);
-  background: var(--color-surface-subtle);
-  padding: 0.8rem 0.9rem;
-  color: var(--color-text-primary);
-  font: inherit;
-}
-
-.recipe-dialog-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.75rem;
-  margin-top: 1.25rem;
-}
-
 @media (max-width: 767px) {
   .recipe-storage-header {
     display: grid;

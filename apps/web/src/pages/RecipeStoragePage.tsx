@@ -1,6 +1,7 @@
-import { useEffect, useState, type FormEvent } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '../components/ui/Button/Button';
 import ExpansionPanel from '../components/ui/ExpansionPanel/ExpansionPanel';
+import AddRecipeGroupDialog from '../features/recipes/components/AddRecipeGroupDialog';
 import './recipe-storage-page.css';
 
 type RecipeGroup = {
@@ -29,7 +30,6 @@ const MOCK_RECIPE_GROUPS: RecipeGroup[] = [
 
 function RecipeStoragePage() {
   const [recipeGroups, setRecipeGroups] = useState<RecipeGroup[]>([]);
-  const [groupName, setGroupName] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [isGroupDialogOpen, setIsGroupDialogOpen] = useState(false);
 
@@ -44,25 +44,17 @@ function RecipeStoragePage() {
 
   const hasSavedRecipes = recipeGroups.some((group) => group.recipes.length > 0);
 
-  const handleCreateGroup = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const trimmedName = groupName.trim();
-    if (!trimmedName) {
-      return;
-    }
-
-    const newGroupId = `${trimmedName.toLowerCase().replace(/\s+/g, '-')}-${Date.now()}`;
+  const handleCreateGroup = (name: string) => {
+    const newGroupId = `${name.toLowerCase().replace(/\s+/g, '-')}-${Date.now()}`;
 
     setRecipeGroups((currentGroups) => [
       {
         id: newGroupId,
-        name: trimmedName,
+        name,
         recipes: []
       },
       ...currentGroups
     ]);
-    setGroupName('');
     setIsGroupDialogOpen(false);
   };
 
@@ -117,39 +109,7 @@ function RecipeStoragePage() {
       )}
 
       {isGroupDialogOpen && (
-        <div className="recipe-dialog-backdrop" onClick={() => setIsGroupDialogOpen(false)}>
-          <div
-            className="recipe-dialog"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="create-group-title"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <h2 id="create-group-title">Create a recipe group</h2>
-
-            <form onSubmit={handleCreateGroup}>
-              <label className="recipe-dialog-field" htmlFor="recipe-group-name">
-                <span>Group name</span>
-                <input
-                  id="recipe-group-name"
-                  name="groupName"
-                  type="text"
-                  value={groupName}
-                  onChange={(event) => setGroupName(event.target.value)}
-                  placeholder="Favorites"
-                  autoFocus
-                />
-              </label>
-
-              <div className="recipe-dialog-actions">
-                <Button variant="text-neutral" onClick={() => setIsGroupDialogOpen(false)}>
-                  Cancel
-                </Button>
-                <Button type="submit">Save group</Button>
-              </div>
-            </form>
-          </div>
-        </div>
+        <AddRecipeGroupDialog onCancel={() => setIsGroupDialogOpen(false)} onSubmit={handleCreateGroup} />
       )}
     </section>
   );

@@ -1,0 +1,29 @@
+.dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  background: rgba(15, 23, 42, 0.45);
+  padding: 1rem;
+}
+
+.dialog {
+  width: min(30rem, 100%);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-overlay);
+  background: var(--color-surface-default);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-padding-card);
+}
+
+.dialog h2 {
+  margin: 0 0 var(--spacing-margin-element);
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-gap-tight);
+  margin-top: var(--spacing-margin-element);
+}
