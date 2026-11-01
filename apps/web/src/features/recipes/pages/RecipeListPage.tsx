@@ -10,6 +10,10 @@ type RecipeGroup = {
   recipes: string[];
 };
 
+type CreateRecipeGroupRequest = {
+  name: string;
+};
+
 const MOCK_RECIPE_GROUPS: RecipeGroup[] = [
   {
     id: 'favorites',
@@ -45,10 +49,11 @@ function RecipeListPage() {
   const hasSavedRecipes = recipeGroups.some((group) => group.recipes.length > 0);
 
   const handleCreateGroup = async (name: string) => {
+    const request: CreateRecipeGroupRequest = { name };
     const response = await fetch('/api/recipe-groups', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name })
+      body: JSON.stringify(request)
     });
 
     if (!response.ok) {
