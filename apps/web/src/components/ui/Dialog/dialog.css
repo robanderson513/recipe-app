@@ -5,7 +5,7 @@
   display: grid;
   place-items: center;
   background: rgba(15, 23, 42, 0.45);
-  padding: 1rem;
+  padding: var(--spacing-padding-control);
 }
 
 .dialog {

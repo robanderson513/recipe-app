@@ -13,11 +13,11 @@ function ExpansionPanel({ title, headerAdornment, children }: ExpansionPanelProp
   const [isExpanded, setIsExpanded] = useState(true);
 
   return (
-    <section className="expansion-panel border rounded-card bg-surface-default">
-      <div className="expansion-panel-header flex items-center justify-between gap-tight bg-surface-subtle p-control">
-        <h2 className="expansion-panel-heading text-title font-weight-strong">
+    <section className="expansion-panel">
+      <div className="flex items-center justify-between gap-tight bg-surface-subtle p-control">
+        <h2 className="text-title font-weight-strong">
           <button
-            className="expansion-panel-toggle flex items-center gap-tight border-none focus-ring font-body font-weight-strong"
+            className="expansion-panel-toggle"
             type="button"
             aria-expanded={isExpanded}
             aria-controls={contentId}

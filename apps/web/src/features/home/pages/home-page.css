@@ -2,13 +2,12 @@
   display: grid;
   align-content: center;
   justify-items: center;
+  gap: var(--spacing-gap-default);
   padding: var(--spacing-padding-card);
   text-align: center;
 
-  .intro {
-    max-width: 28rem;
-    margin: var(--spacing-gap-tight) 0;
-    color: var(--color-text-secondary);
+  > p {
+    margin: 0;
   }
 
   .status {
@@ -19,11 +18,10 @@
     border-radius: var(--radius-pill);
     background: var(--color-surface-subtle);
     padding: var(--spacing-padding-control);
-    color: var(--color-text-primary);
 
     .status-indicator {
-      width: 8px;
-      height: 8px;
+      width: var(--spacing-gap-tight);
+      aspect-ratio: 1;
       border-radius: 50%;
       background: var(--color-action-primary-default);
     }
