@@ -68,8 +68,8 @@ function RecipeListPage() {
   return (
     <section className="recipe-list-page">
       <div className="flex flex-wrap items-end justify-between gap-default mb-section">
-        <div>
-          <p className="eyebrow">Your collection</p>
+        <div className="flex flex-col gap-tight">
+          <p className="overline">Your collection</p>
           <h1 className="text-display font-heading font-weight-emphasis">Saved recipes</h1>
         </div>
 
@@ -85,7 +85,7 @@ function RecipeListPage() {
         <p className="text-secondary">Loading your recipes...</p>
       ) : !hasSavedRecipes ? (
         <div
-          className="recipe-list-empty-state flex flex-col items-center justify-center gap-default border rounded-card bg-surface-subtle p-card text-center"
+          className="flex flex-col items-center justify-center gap-default border rounded-card bg-surface-subtle p-card text-center"
           aria-live="polite"
         >
           <h2 className="text-title">No recipes saved</h2>
@@ -101,11 +101,7 @@ function RecipeListPage() {
               <ExpansionPanel
                 key={group.id}
                 title={group.name}
-                headerAdornment={
-                  <span className="recipe-group-count inline-flex items-center justify-center rounded-pill px-compact py-compact text-caption font-weight-strong">
-                    {group.recipes.length}
-                  </span>
-                }
+                headerAdornment={<span className="recipe-group-count">{group.recipes.length}</span>}
               >
                 <ul className="flex flex-col gap-compact p-control">
                   {group.recipes.length > 0 ? (

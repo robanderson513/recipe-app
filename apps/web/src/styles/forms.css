@@ -10,6 +10,4 @@ input {
   border-radius: var(--radius-control);
   background: var(--color-surface-subtle);
   padding: var(--spacing-padding-control);
-  color: var(--color-text-primary);
-  font: inherit;
 }

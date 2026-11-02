@@ -2,11 +2,14 @@
   height: 100%;
 }
 
-.recipe-list-empty-state {
-  min-height: 19rem;
-}
-
 .recipe-group-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  padding: var(--spacing-padding-compact);
   background: var(--color-action-primary-soft);
   color: var(--color-action-primary-default);
+  font-size: var(--typography-font-size-caption);
+  font-weight: var(--typography-font-weight-strong);
 }
