@@ -12,6 +12,10 @@
   padding: var(--spacing-padding-control);
   resize: vertical;
   font: inherit;
+
+  &:hover {
+    background: var(--color-state-hover-surface);
+  }
 }
 
 .text-area[aria-invalid='true'] {
