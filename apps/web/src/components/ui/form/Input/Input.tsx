@@ -10,7 +10,7 @@ type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'id'> & {
   message?: ReactNode;
 };
 
-function Input({ label, message, type = 'text', onBlur, onChange, onInvalid, ...props }: InputProps) {
+function Input({ label, message, type, onBlur, onChange, onInvalid, ...props }: InputProps) {
   const inputId = useId();
   const { hasError, validationError, handleBlur, handleChange, handleInvalid } = useFieldValidation<HTMLInputElement>(
     { label, onBlur, onChange, onInvalid }

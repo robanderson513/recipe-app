@@ -9,12 +9,18 @@ import useFieldMessage from '../hooks/useFieldMessage';
 import useFieldValidation from '../hooks/useFieldValidation';
 import './dropdown.css';
 
+export interface DropdownOption {
+  key: string;
+  value: string;
+}
+
 type DropdownProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'id'> & {
   label: string;
   message?: ReactNode;
+  options: DropdownOption[];
 };
 
-function Dropdown({ label, message, onBlur, onChange, onInvalid, ...props }: DropdownProps) {
+function Dropdown({ label, message, options, onBlur, onChange, onInvalid, ...props }: DropdownProps) {
   const dropdownId = useId();
   const { hasError, validationError, handleBlur, handleChange, handleInvalid } = useFieldValidation<HTMLSelectElement>(
     { label, onBlur, onChange, onInvalid }
@@ -39,7 +45,13 @@ function Dropdown({ label, message, onBlur, onChange, onInvalid, ...props }: Dro
             onBlur={handleBlur}
             onChange={handleChange}
             onInvalid={handleInvalid}
-          />
+          >
+            {options.map(({ key, value }) => (
+              <option key={key} value={key}>
+                {value}
+              </option>
+            ))}
+          </select>
         </span>
       </Label>
       {shownMessage != null && (

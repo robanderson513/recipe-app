@@ -6,7 +6,7 @@ type FormMessageProps = {
   error?: boolean;
 };
 
-function FormMessage({ children, error = false }: FormMessageProps) {
+function FormMessage({ children, error }: FormMessageProps) {
   return (
     <p className={`form-message${error ? ' form-message-error' : ''}`} role={error ? 'alert' : undefined}>
       {children}

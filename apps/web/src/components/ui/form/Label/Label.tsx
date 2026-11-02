@@ -8,7 +8,7 @@ type LabelProps = {
   children: ReactNode;
 };
 
-function Label({ htmlFor, label, required = false, children }: LabelProps) {
+function Label({ htmlFor, label, required, children }: LabelProps) {
   return (
     <label htmlFor={htmlFor}>
       <span>

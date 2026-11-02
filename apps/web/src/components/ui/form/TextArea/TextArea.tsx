@@ -10,7 +10,7 @@ type TextAreaProps = Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'id'> & {
   message?: ReactNode;
 };
 
-function TextArea({ label, message, onBlur, onChange, onInvalid, ...props }: TextAreaProps) {
+function TextArea({ label, message, rows = 4, onBlur, onChange, onInvalid, ...props }: TextAreaProps) {
   const textAreaId = useId();
   const { hasError, validationError, handleBlur, handleChange, handleInvalid } =
     useFieldValidation<HTMLTextAreaElement>({ label, onBlur, onChange, onInvalid });
@@ -28,6 +28,7 @@ function TextArea({ label, message, onBlur, onChange, onInvalid, ...props }: Tex
           id={textAreaId}
           className="text-area"
           {...props}
+          rows={rows}
           aria-describedby={describedBy}
           aria-invalid={hasError ? true : props['aria-invalid']}
           onBlur={handleBlur}
