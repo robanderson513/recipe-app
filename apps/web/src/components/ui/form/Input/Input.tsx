@@ -1,6 +1,7 @@
-import { useId, useState, type ChangeEvent, type FocusEvent, type FormEvent, type InputHTMLAttributes, type ReactNode } from 'react';
+import { useId, type InputHTMLAttributes, type ReactNode } from 'react';
 import FormMessage from '../FormMessage/FormMessage';
 import Label from '../Label/Label';
+import useFieldValidation from '../useFieldValidation';
 import './input.css';
 
 type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'id'> & {
@@ -8,46 +9,14 @@ type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'id'> & {
   message?: ReactNode;
 };
 
-function getValidationError(input: HTMLInputElement, label: string) {
-  if (input.validity.valid) {
-    return '';
-  }
-
-  if (input.validity.valueMissing) {
-    return `${label} is required`;
-  }
-
-  return input.validationMessage;
-}
-
 function Input({ label, message, type = 'text', onBlur, onChange, onInvalid, ...props }: InputProps) {
   const inputId = useId();
   const messageId = `${inputId}-message`;
-  const [hasInteracted, setHasInteracted] = useState(false);
-  const [validationError, setValidationError] = useState('');
-  const hasError = validationError !== '';
+  const { hasError, validationError, handleBlur, handleChange, handleInvalid } = useFieldValidation<HTMLInputElement>(
+    { label, onBlur, onChange, onInvalid }
+  );
   const shownMessage = hasError ? validationError : message;
   const describedBy = [props['aria-describedby'], shownMessage != null ? messageId : undefined].filter(Boolean).join(' ');
-
-  const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
-    setHasInteracted(true);
-    setValidationError(getValidationError(event.currentTarget, label));
-    onBlur?.(event);
-  };
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    if (hasInteracted) {
-      setValidationError(getValidationError(event.currentTarget, label));
-    }
-    onChange?.(event);
-  };
-
-  const handleInvalid = (event: FormEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    setHasInteracted(true);
-    setValidationError(getValidationError(event.currentTarget, label));
-    onInvalid?.(event);
-  };
 
   return (
     <div className="input-field">

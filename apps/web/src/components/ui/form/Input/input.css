@@ -8,8 +8,12 @@
   width: 100%;
   border: 1px solid var(--color-border-default);
   border-radius: var(--radius-control);
-  background: var(--color-surface-subtle);
+  background: var(--color-surface-default);
   padding: var(--spacing-padding-control);
+
+  &:hover {
+    background: var(--color-state-hover-surface);
+  }
 }
 
 .input[aria-invalid='true'] {
