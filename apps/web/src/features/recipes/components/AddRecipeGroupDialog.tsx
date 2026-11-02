@@ -1,7 +1,7 @@
 import { useId, useState, type SubmitEvent } from 'react';
-import Button from '@/components/ui/Button/Button';
-import Dialog from '@/components/ui/Dialog/Dialog';
-import { Input } from '@/components/ui/form';
+import Button from '@ui/Button';
+import Dialog from '@ui/Dialog';
+import { Input } from '@form';
 
 type AddRecipeGroupDialogProps = {
   onCancel: () => void;

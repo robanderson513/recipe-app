@@ -19,7 +19,9 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@ui/*": ["src/components/ui/*"],
+      "@form": ["src/components/ui/form/index.ts"],
+      "@form/*": ["src/components/ui/form/*"]
     }
   },
   "include": ["src"]
