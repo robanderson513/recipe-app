@@ -1,0 +1,7 @@
+.form-message {
+  margin: 0;
+}
+
+.form-message-error {
+  color: var(--color-state-invalid-foreground);
+}

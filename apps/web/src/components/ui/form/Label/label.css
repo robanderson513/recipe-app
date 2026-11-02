@@ -1,0 +1,7 @@
+.label-required-marker {
+  color: var(--color-state-invalid-foreground);
+}
+
+label:has(.input:user-invalid) > span {
+  color: var(--color-state-invalid-foreground);
+}

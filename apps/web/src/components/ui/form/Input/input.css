@@ -1,0 +1,18 @@
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-gap-tight);
+}
+
+.input {
+  width: 100%;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-subtle);
+  padding: var(--spacing-padding-control);
+}
+
+.input[aria-invalid='true'] {
+  border-color: var(--color-state-invalid-foreground);
+  background: var(--color-state-invalid-surface);
+}
