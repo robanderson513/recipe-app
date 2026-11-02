@@ -1,13 +1,15 @@
 import { useState, type ChangeEvent, type FocusEvent, type InvalidEvent } from 'react';
 
-type FieldValidationOptions<T extends HTMLInputElement | HTMLSelectElement> = {
+type ValidatableField = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+
+type FieldValidationOptions<T extends ValidatableField> = {
   label: string;
   onBlur?: (event: FocusEvent<T>) => void;
   onChange?: (event: ChangeEvent<T>) => void;
   onInvalid?: (event: InvalidEvent<T>) => void;
 };
 
-function getValidationError(field: HTMLInputElement | HTMLSelectElement, label: string) {
+function getValidationError(field: ValidatableField, label: string) {
   if (field.validity.valid) {
     return '';
   }
@@ -19,7 +21,7 @@ function getValidationError(field: HTMLInputElement | HTMLSelectElement, label: 
   return field.validationMessage;
 }
 
-function useFieldValidation<T extends HTMLInputElement | HTMLSelectElement>({
+function useFieldValidation<T extends ValidatableField>({
   label,
   onBlur,
   onChange,

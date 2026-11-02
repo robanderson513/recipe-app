@@ -1,6 +1,7 @@
 import { useId, useState, type SubmitEvent } from 'react';
-import Button from '../../../components/ui/Button/Button';
-import Dialog from '../../../components/ui/Dialog/Dialog';
+import Button from '@/components/ui/Button/Button';
+import Dialog from '@/components/ui/Dialog/Dialog';
+import { Input } from '@/components/ui/form';
 
 type AddRecipeGroupDialogProps = {
   onCancel: () => void;
@@ -8,7 +9,6 @@ type AddRecipeGroupDialogProps = {
 };
 
 function AddRecipeGroupDialog({ onCancel, onSubmit }: AddRecipeGroupDialogProps) {
-  const nameInputId = useId();
   const formId = useId();
   const [groupName, setGroupName] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -49,19 +49,16 @@ function AddRecipeGroupDialog({ onCancel, onSubmit }: AddRecipeGroupDialogProps)
       }
     >
       <form id={formId} onSubmit={handleSubmit}>
-        <label htmlFor={nameInputId}>
-          <span>Group name</span>
-          <input
-            id={nameInputId}
-            name="groupName"
-            type="text"
-            value={groupName}
-            onChange={(event) => setGroupName(event.target.value)}
-            placeholder="Ex. Favorites"
-            autoFocus
-            required
-          />
-        </label>
+        <Input
+          label="Group name"
+          name="groupName"
+          type="text"
+          value={groupName}
+          onChange={(event) => setGroupName(event.target.value)}
+          placeholder="Ex. Favorites"
+          autoFocus
+          required
+        />
         {submitError && <p role="alert">{submitError}</p>}
       </form>
     </Dialog>

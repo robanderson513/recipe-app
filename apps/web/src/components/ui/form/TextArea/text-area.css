@@ -1,0 +1,20 @@
+.text-area-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-gap-tight);
+}
+
+.text-area {
+  width: 100%;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-default);
+  padding: var(--spacing-padding-control);
+  resize: vertical;
+  font: inherit;
+}
+
+.text-area[aria-invalid='true'] {
+  border-color: var(--color-state-invalid-foreground);
+  background: var(--color-state-invalid-surface);
+}

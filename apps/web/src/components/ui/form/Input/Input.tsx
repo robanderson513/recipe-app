@@ -1,7 +1,8 @@
 import { useId, type InputHTMLAttributes, type ReactNode } from 'react';
 import FormMessage from '../FormMessage/FormMessage';
 import Label from '../Label/Label';
-import useFieldValidation from '../useFieldValidation';
+import useFieldMessage from '../hooks/useFieldMessage';
+import useFieldValidation from '../hooks/useFieldValidation';
 import './input.css';
 
 type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'id'> & {
@@ -11,12 +12,15 @@ type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'id'> & {
 
 function Input({ label, message, type = 'text', onBlur, onChange, onInvalid, ...props }: InputProps) {
   const inputId = useId();
-  const messageId = `${inputId}-message`;
   const { hasError, validationError, handleBlur, handleChange, handleInvalid } = useFieldValidation<HTMLInputElement>(
     { label, onBlur, onChange, onInvalid }
   );
-  const shownMessage = hasError ? validationError : message;
-  const describedBy = [props['aria-describedby'], shownMessage != null ? messageId : undefined].filter(Boolean).join(' ');
+  const { messageId, shownMessage, describedBy } = useFieldMessage({
+    id: inputId,
+    message,
+    validationError: hasError ? validationError : '',
+    describedBy: props['aria-describedby']
+  });
 
   return (
     <div className="input-field">
@@ -26,7 +30,7 @@ function Input({ label, message, type = 'text', onBlur, onChange, onInvalid, ...
           className="input"
           {...props}
           type={type}
-          aria-describedby={describedBy || undefined}
+          aria-describedby={describedBy}
           aria-invalid={hasError ? true : props['aria-invalid']}
           onBlur={handleBlur}
           onChange={handleChange}
