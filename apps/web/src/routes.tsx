@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { IconName } from './consts/icons';
+import HomePage from './features/home/pages/HomePage';
 import RecipeListPage from './features/recipes/pages/RecipeListPage';
 
 type AppRoute = {
@@ -15,17 +16,7 @@ type AppRoute = {
 export const APP_ROUTES = [
   {
     path: '/',
-    element: (
-      <section className="welcome">
-        <p className="eyebrow">Your kitchen starts here</p>
-        <h1>Recipe App</h1>
-        <p className="intro">A fresh place to collect, organize, and cook the recipes you love.</p>
-        <div className="status">
-          <span className="status-indicator" aria-hidden="true" />
-          Ready for your first recipe
-        </div>
-      </section>
-    ),
+    element: <HomePage />,
     navigation: { label: 'Home', to: '/', icon: IconName.Home }
   },
   {

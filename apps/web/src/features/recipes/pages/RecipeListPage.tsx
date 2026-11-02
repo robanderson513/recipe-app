@@ -69,7 +69,7 @@ function RecipeListPage() {
     <section className="recipe-list-page">
       <div className="flex flex-wrap items-end justify-between gap-default mb-section">
         <div>
-          <p className="eyebrow">Your collection</p>
+          <p className="overline">Your collection</p>
           <h1 className="text-display font-heading font-weight-emphasis">Saved recipes</h1>
         </div>
 

@@ -1,0 +1,7 @@
+.overline {
+  margin: 0 0 var(--spacing-gap-tight);
+  color: var(--color-action-primary-default);
+  font-size: var(--typography-font-size-label);
+  font-weight: var(--typography-font-weight-strong);
+  text-transform: uppercase;
+}
