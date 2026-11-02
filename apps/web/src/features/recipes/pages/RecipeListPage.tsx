@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import Button from '../../../components/ui/Button/Button';
-import ExpansionPanel from '../../../components/ui/ExpansionPanel/ExpansionPanel';
+import Button from '@ui/Button';
+import ExpansionPanel from '@ui/ExpansionPanel';
 import AddRecipeGroupDialog from '../components/AddRecipeGroupDialog';
 import './recipe-list-page.css';
 
