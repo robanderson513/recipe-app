@@ -1,18 +1,23 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { createBrowserRouter, Navigate, Outlet, RouterProvider } from 'react-router-dom';
 import AppLayout from './components/navigation/AppLayout';
 import { APP_ROUTES } from './routes';
 
+const router = createBrowserRouter([
+  {
+    element: (
+      <AppLayout>
+        <Outlet />
+      </AppLayout>
+    ),
+    children: [
+      ...APP_ROUTES.map(({ path, element }) => ({ path, element })),
+      { path: '*', element: <Navigate to="/" replace /> }
+    ]
+  }
+]);
+
 function App() {
-  return (
-    <AppLayout>
-      <Routes>
-        {APP_ROUTES.map(({ path, element }) => (
-          <Route key={path} path={path} element={element} />
-        ))}
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </AppLayout>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
