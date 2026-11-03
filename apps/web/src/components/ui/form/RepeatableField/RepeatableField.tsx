@@ -1,6 +1,5 @@
 import Button from '@ui/Button';
 import { Input, Label } from '@form';
-import './repeatable-field.css';
 
 type RepeatableFieldProps = {
   label: string;
@@ -27,11 +26,11 @@ function RepeatableField({ label, addButtonText, placeholder, values, onChange }
   };
 
   return (
-    <fieldset className="repeatable-field">
+    <fieldset className="flex flex-col gap-default border rounded-card bg-surface-subtle p-card">
       <h3>{label}</h3>
       {values.map((value, index) => (
-        <div key={`${label}-${index}`} className="flex flex-col gap-2">
-          <div className="flex justify-between items-center gap-2 pb-compact">
+        <div key={`${label}-${index}`} className="flex flex-col gap-default">
+          <div className="flex justify-between items-center gap-compact pb-compact">
             <Label label={`${label} ${index + 1}`} htmlFor={`${label.toLowerCase()}-${index + 1}`} />
 
             <Button

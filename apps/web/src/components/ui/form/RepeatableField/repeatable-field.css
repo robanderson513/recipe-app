@@ -1,9 +1,0 @@
-.repeatable-field {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-gap-default);
-  border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-card);
-  background: var(--color-surface-subtle);
-  padding: 1rem;
-}

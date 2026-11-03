@@ -103,7 +103,11 @@ function RecipeListPage() {
               <ExpansionPanel
                 key={group.id}
                 title={group.name}
-                headerAdornment={<span className="recipe-group-count">{group.recipes.length}</span>}
+                headerAdornment={
+                  <span className="inline-flex items-center justify-center rounded-pill p-compact bg-surface-subtle text-primary text-caption font-weight-strong">
+                    {group.recipes.length}
+                  </span>
+                }
               >
                 <ul className="flex flex-col gap-compact p-control">
                   {group.recipes.length > 0 ? (
