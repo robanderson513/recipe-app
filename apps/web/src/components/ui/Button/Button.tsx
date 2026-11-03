@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes } from 'react';
 
 type ButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'className'> & {
-  variant?: 'primary' | 'secondary' | 'icon' | 'text-neutral';
+  variant?: 'primary' | 'secondary' | 'tonal' | 'elevated' | 'text' | 'text-neutral' | 'icon';
 };
 
 function Button({ variant = 'primary', type = 'button', children, ...props }: ButtonProps) {

@@ -31,7 +31,7 @@ function RepeatableField({ label, addButtonText, placeholder, values, onChange }
       <h3>{label}</h3>
       {values.map((value, index) => (
         <div key={`${label}-${index}`} className="flex flex-col gap-2">
-          <div className="flex justify-between items-center gap-2">
+          <div className="flex justify-between items-center gap-2 pb-compact">
             <Label label={`${label} ${index + 1}`} htmlFor={`${label.toLowerCase()}-${index + 1}`} />
 
             <Button
