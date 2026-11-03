@@ -1,0 +1,16 @@
+.recipe-detail-form {
+  .field-group,
+  .field-row {
+    display: grid;
+    gap: var(--spacing-gap-default);
+  }
+
+  .field-row {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+.recipe-detail-error {
+  margin: 0;
+  color: var(--color-state-invalid-foreground);
+}
