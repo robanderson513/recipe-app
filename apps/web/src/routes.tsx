@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { IconName } from './consts/icons';
 import HomePage from './features/home/pages/HomePage';
+import RecipeDetailPage from './features/recipes/pages/RecipeDetailPage';
 import RecipeListPage from './features/recipes/pages/RecipeListPage';
 
 type AppRoute = {
@@ -20,13 +21,17 @@ export const APP_ROUTES = [
     navigation: { label: 'Home', to: '/', icon: IconName.Home }
   },
   {
-    path: '/recipes/*',
+    path: '/recipes',
     element: <RecipeListPage />,
     navigation: {
       label: 'My Recipes',
       to: '/recipes',
       icon: IconName.Recipes
     }
+  },
+  {
+    path: '/recipes/new',
+    element: <RecipeDetailPage />
   }
 ] satisfies readonly AppRoute[];
 
