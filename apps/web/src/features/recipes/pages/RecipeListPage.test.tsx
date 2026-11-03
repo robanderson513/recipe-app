@@ -1,4 +1,5 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import RecipeListPage from './RecipeListPage';
 
@@ -11,7 +12,11 @@ describe('RecipeListPage', () => {
   it('shows a loading state and then displays recipe groups', async () => {
     vi.useFakeTimers();
 
-    render(<RecipeListPage />);
+    render(
+      <MemoryRouter initialEntries={['/recipes']}>
+        <RecipeListPage />
+      </MemoryRouter>
+    );
 
     expect(screen.getByText('Loading your recipes...')).toBeInTheDocument();
 
@@ -32,7 +37,11 @@ describe('RecipeListPage', () => {
     vi.stubGlobal('fetch', fetchMock);
     vi.useFakeTimers();
 
-    render(<RecipeListPage />);
+    render(
+      <MemoryRouter initialEntries={['/recipes']}>
+        <RecipeListPage />
+      </MemoryRouter>
+    );
     await act(async () => {
       vi.advanceTimersByTime(150);
     });

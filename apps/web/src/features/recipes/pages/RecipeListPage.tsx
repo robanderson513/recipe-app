@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '@ui/Button';
 import ExpansionPanel from '@ui/ExpansionPanel';
 import AddRecipeGroupDialog from '../components/AddRecipeGroupDialog';
@@ -33,6 +34,7 @@ const MOCK_RECIPE_GROUPS: RecipeGroup[] = [
 ];
 
 function RecipeListPage() {
+  const navigate = useNavigate();
   const [recipeGroups, setRecipeGroups] = useState<RecipeGroup[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isGroupDialogOpen, setIsGroupDialogOpen] = useState(false);
@@ -74,7 +76,7 @@ function RecipeListPage() {
         </div>
 
         <div className="flex flex-wrap justify-end gap-compact">
-          <Button variant="secondary" aria-label="Add a new recipe" disabled>
+          <Button variant="secondary" aria-label="Add a new recipe" onClick={() => navigate('/recipes/new')}>
             Add recipe
           </Button>
           <Button onClick={() => setIsGroupDialogOpen(true)}>Create group</Button>
