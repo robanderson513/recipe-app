@@ -48,7 +48,7 @@ Before finishing a change, confirm all of the following:
 - TypeScript remains type-safe and data flow is explicit.
 - The change does not leak secrets, credentials, or environment-specific values into the repository.
 - Any schema or API contract change is reflected in the relevant migration, docs, or caller code.
-- Tests or validation are added or updated when behavior changes.
+- Test changes are deferred until a pull request is being created, unless explicitly requested sooner; existing tests may still be run for validation.
 - The patch is small, understandable, and easy to review.
 
 ## PR review guidance
