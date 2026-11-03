@@ -21,7 +21,8 @@
     "paths": {
       "@ui/*": ["src/components/ui/*"],
       "@form": ["src/components/ui/form/index.ts"],
-      "@form/*": ["src/components/ui/form/*"]
+      "@form/*": ["src/components/ui/form/*"],
+      "@hooks": ["src/hooks/index.ts"]
     }
   },
   "include": ["src"]

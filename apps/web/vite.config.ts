@@ -7,7 +7,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@ui': fileURLToPath(new URL('./src/components/ui', import.meta.url)),
-      '@form': fileURLToPath(new URL('./src/components/ui/form', import.meta.url))
+      '@form': fileURLToPath(new URL('./src/components/ui/form', import.meta.url)),
+      '@hooks': fileURLToPath(new URL('./src/hooks/index.ts', import.meta.url))
     }
   },
   server: {
