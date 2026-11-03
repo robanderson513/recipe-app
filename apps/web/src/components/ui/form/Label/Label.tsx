@@ -3,12 +3,16 @@ import './label.css';
 
 type LabelProps = {
   htmlFor: string;
-  label: string;
+  label?: string;
   required?: boolean;
-  children: ReactNode;
+  children?: ReactNode;
 };
 
 function Label({ htmlFor, label, required, children }: LabelProps) {
+  if (!label) {
+    return children;
+  }
+
   return (
     <label htmlFor={htmlFor}>
       <span>

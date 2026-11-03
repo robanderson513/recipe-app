@@ -3,19 +3,35 @@ import { useState, type ChangeEvent, type FocusEvent, type InvalidEvent } from '
 type ValidatableField = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 
 type FieldValidationOptions<T extends ValidatableField> = {
-  label: string;
+  label?: string;
   onBlur?: (event: FocusEvent<T>) => void;
   onChange?: (event: ChangeEvent<T>) => void;
   onInvalid?: (event: InvalidEvent<T>) => void;
 };
 
-function getValidationError(field: ValidatableField, label: string) {
+function getFieldLabel(field: ValidatableField, label?: string) {
+  const labelledBy = field.getAttribute('aria-labelledby');
+  if (labelledBy) {
+    const referencedLabels = labelledBy
+      .split(/\s+/)
+      .map((id) => field.ownerDocument.getElementById(id)?.textContent?.trim())
+      .filter((text): text is string => Boolean(text));
+
+    if (referencedLabels.length > 0) {
+      return referencedLabels.join(' ');
+    }
+  }
+
+  return field.getAttribute('aria-label')?.trim() || label || 'This field';
+}
+
+function getValidationError(field: ValidatableField, label?: string) {
   if (field.validity.valid) {
     return '';
   }
 
   if (field.validity.valueMissing) {
-    return `${label} is required`;
+    return `${getFieldLabel(field, label)} is required`;
   }
 
   return field.validationMessage;

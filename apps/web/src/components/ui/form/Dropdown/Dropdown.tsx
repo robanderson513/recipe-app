@@ -15,7 +15,7 @@ export interface DropdownOption {
 }
 
 type DropdownProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'id'> & {
-  label: string;
+  label?: string;
   message?: ReactNode;
   options: DropdownOption[];
 };

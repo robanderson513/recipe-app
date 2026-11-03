@@ -6,15 +6,18 @@ import useFieldValidation from '../hooks/useFieldValidation';
 import './input.css';
 
 type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'id'> & {
-  label: string;
+  label?: string;
   message?: ReactNode;
 };
 
 function Input({ label, message, type, onBlur, onChange, onInvalid, ...props }: InputProps) {
   const inputId = useId();
-  const { hasError, validationError, handleBlur, handleChange, handleInvalid } = useFieldValidation<HTMLInputElement>(
-    { label, onBlur, onChange, onInvalid }
-  );
+  const { hasError, validationError, handleBlur, handleChange, handleInvalid } = useFieldValidation<HTMLInputElement>({
+    label,
+    onBlur,
+    onChange,
+    onInvalid
+  });
   const { messageId, shownMessage, describedBy } = useFieldMessage({
     id: inputId,
     message,

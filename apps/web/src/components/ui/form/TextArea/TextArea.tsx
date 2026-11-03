@@ -6,7 +6,7 @@ import useFieldValidation from '../hooks/useFieldValidation';
 import './text-area.css';
 
 type TextAreaProps = Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'id'> & {
-  label: string;
+  label?: string;
   message?: ReactNode;
 };
 
