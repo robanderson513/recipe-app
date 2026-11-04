@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { HealthModule } from './health/health.module';
 import { RecipeGroupsModule } from './recipe-groups/recipe-groups.module';
+import { RecipesModule } from './recipe/recipes.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { RecipeGroupsModule } from './recipe-groups/recipe-groups.module';
       })
     }),
     HealthModule,
+    RecipesModule,
     RecipeGroupsModule
   ]
 })
