@@ -12,11 +12,18 @@ export class RecipesService {
   ) {}
 
   create(recipe: CreateRecipeDto) {
-    const recipeGroup = this.recipesRepository.create({
-      name: recipe.name,
-      description: recipe.description
-    });
+    const recipeEntity = this.mapCreateRecipeDtoToEntity(recipe);
+    const recipeSave = this.recipesRepository.create(recipeEntity);
 
-    return this.recipesRepository.save(recipeGroup);
+    return this.recipesRepository.save(recipeSave);
+  }
+
+  private mapCreateRecipeDtoToEntity(createRecipeDto: CreateRecipeDto): Recipe {
+    const recipe = new Recipe();
+    recipe.name = createRecipeDto.name;
+    recipe.description = createRecipeDto.description;
+    recipe.ingredients = createRecipeDto.ingredients;
+    recipe.steps = createRecipeDto.steps;
+    return recipe;
   }
 }

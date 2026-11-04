@@ -77,7 +77,7 @@ function RecipeDetailPage() {
       description: formState.description.trim(),
       groupId: formState.groupId || null,
       measurementSystem: formState.measurementSystem,
-      ingredients: formState.ingredients.map((ingredient) => ingredient.trim()).filter(Boolean),
+      ingredients: formState.ingredients.map((ingredient) => ({ name: ingredient.trim() })).filter(Boolean),
       steps: formState.steps.map((step) => step.trim()).filter(Boolean)
     };
 

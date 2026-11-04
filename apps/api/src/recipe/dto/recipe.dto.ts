@@ -12,6 +12,12 @@ export class CreateRecipeDto {
   @MaxLength(500)
   description!: string;
 
+  @IsArray()
+  @ArrayMinSize(1)
+  @ValidateNested({ each: true })
+  @Type(() => CreateIngredientDto)
+  ingredients!: CreateIngredientDto[];
+
   @Transform(({ value }) =>
     Array.isArray(value) ? value.map((step) => (typeof step === 'string' ? step.trim() : step)) : value
   )
@@ -20,10 +26,4 @@ export class CreateRecipeDto {
   @IsString({ each: true })
   @IsNotEmpty({ each: true })
   steps!: string[];
-
-  @IsArray()
-  @ArrayMinSize(1)
-  @ValidateNested({ each: true })
-  @Type(() => CreateIngredientDto)
-  ingredients!: CreateIngredientDto[];
 }
