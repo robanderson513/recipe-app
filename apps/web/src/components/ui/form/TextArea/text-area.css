@@ -1,24 +1,46 @@
 .text-area-field {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-scale-2);
+  gap: var(--spacing-scale-1);
+}
+
+.text-area-field > label {
+  font-weight: var(--typography-font-weight-strong);
 }
 
 .text-area {
   width: 100%;
+  min-height: 96px;
+  padding: var(--spacing-scale-2) var(--spacing-scale-3);
   border: 1px solid var(--color-border-default);
   border-radius: var(--radius-control);
   background: var(--color-surface-default);
-  padding: var(--spacing-scale-3);
-  resize: vertical;
+  color: var(--color-text-primary);
   font: inherit;
+  resize: vertical;
+}
 
-  &:hover {
-    background: var(--color-state-hover-surface);
-  }
+.text-area:hover:not(:disabled):not([aria-invalid='true']) {
+  border-color: var(--color-border-strong);
+}
+
+.text-area:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
 }
 
 .text-area[aria-invalid='true'] {
-  border-color: var(--color-state-invalid-foreground);
-  background: var(--color-state-invalid-surface);
+  color: var(--color-state-invalid-foreground);
+  background-color: var(--color-state-invalid-surface);
+  border-color: var(--color-state-invalid-border);
+}
+
+.text-area[aria-invalid='true']:focus-visible {
+  outline-color: var(--color-state-invalid-foreground);
+}
+
+.text-area:disabled {
+  color: var(--color-state-disabled-foreground);
+  background-color: var(--color-state-disabled-surface);
+  border-color: var(--color-state-disabled-border);
 }

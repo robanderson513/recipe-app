@@ -1,5 +1,6 @@
 .form-message {
   margin: 0;
+  font-size: var(--typography-font-size-caption);
 }
 
 .form-message-error {
