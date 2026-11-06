@@ -26,11 +26,11 @@ function RepeatableField({ label, addButtonText, placeholder, values, onChange }
   };
 
   return (
-    <fieldset className="flex flex-col gap-default border rounded-card bg-surface-subtle p-card">
+    <fieldset className="flex flex-col gap-4 border rounded-card bg-surface-subtle p-4">
       <h3>{label}</h3>
       {values.map((value, index) => (
-        <div key={`${label}-${index}`} className="flex flex-col gap-default">
-          <div className="flex justify-between items-center gap-compact pb-compact">
+        <div key={`${label}-${index}`} className="flex flex-col gap-4">
+          <div className="flex justify-between items-center gap-2 pb-2">
             <Label label={`${label} ${index + 1}`} htmlFor={`${label.toLowerCase()}-${index + 1}`} />
 
             <Button

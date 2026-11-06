@@ -1,7 +1,7 @@
 .input-field {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-gap-tight);
+  gap: var(--spacing-scale-2);
 }
 
 .input {
@@ -9,7 +9,7 @@
   border: 1px solid var(--color-border-default);
   border-radius: var(--radius-control);
   background: var(--color-surface-default);
-  padding: var(--spacing-padding-control);
+  padding: var(--spacing-scale-3);
 
   &:hover {
     background: var(--color-state-hover-surface);

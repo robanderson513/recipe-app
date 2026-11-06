@@ -2,7 +2,7 @@
   .field-group,
   .field-row {
     display: grid;
-    gap: var(--spacing-gap-default);
+    gap: var(--spacing-scale-4);
   }
 
   .field-row {
