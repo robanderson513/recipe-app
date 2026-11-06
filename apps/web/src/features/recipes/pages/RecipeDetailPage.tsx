@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type ChangeEvent, type FormEvent } from 'react';
+import { useEffect, useMemo, useState, type ChangeEvent, type SubmitEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUnsavedChanges } from '@hooks';
 import RecipeDetailForm, { type RecipeFormState, type RecipeGroup } from '../components/RecipeDetailForm';
@@ -63,7 +63,7 @@ function RecipeDetailPage() {
     setFormState((currentState) => ({ ...currentState, [fieldName]: nextValues }));
   };
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const trimmedName = formState.name.trim();
