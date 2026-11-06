@@ -14,7 +14,7 @@ function ExpansionPanel({ title, headerAdornment, children }: ExpansionPanelProp
 
   return (
     <section className="expansion-panel">
-      <div className="flex items-center justify-between gap-tight bg-surface-subtle p-control">
+      <div className="flex items-center justify-between gap-2 bg-surface-subtle p-3">
         <h2 className="text-title font-weight-strong">
           <button
             className="expansion-panel-toggle"
