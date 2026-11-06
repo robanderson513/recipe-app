@@ -5,7 +5,7 @@
   display: grid;
   place-items: center;
   background: rgba(15, 23, 42, 0.45);
-  padding: var(--spacing-padding-control);
+  padding: var(--spacing-scale-3);
 }
 
 .dialog {
@@ -35,12 +35,12 @@
   }
 
   > h2 {
-    padding: var(--spacing-padding-card);
+    padding: var(--spacing-scale-4);
     border-bottom: 1px solid var(--color-border-default);
   }
 
   > .dialog-content {
-    padding: var(--spacing-padding-card);
+    padding: var(--spacing-scale-4);
     min-height: 0;
     overflow-y: auto;
   }
@@ -49,8 +49,8 @@
     display: flex;
     flex-shrink: 0;
     justify-content: flex-end;
-    gap: var(--spacing-gap-tight);
-    padding: var(--spacing-padding-card);
+    gap: var(--spacing-scale-2);
+    padding: var(--spacing-scale-4);
     border-top: 1px solid var(--color-border-default);
   }
 }

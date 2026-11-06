@@ -2,6 +2,6 @@
   color: var(--color-state-invalid-foreground);
 }
 
-label:has(.input:user-invalid) > span {
+label:has(:is(.input, .text-area, .dropdown)[aria-invalid='true']) > span {
   color: var(--color-state-invalid-foreground);
 }

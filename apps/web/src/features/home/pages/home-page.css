@@ -2,8 +2,8 @@
   display: grid;
   align-content: center;
   justify-items: center;
-  gap: var(--spacing-gap-default);
-  padding: var(--spacing-padding-card);
+  gap: var(--spacing-scale-4);
+  padding: var(--spacing-scale-4);
   text-align: center;
 
   > p {
@@ -13,14 +13,14 @@
   .status {
     display: flex;
     align-items: center;
-    gap: var(--spacing-gap-tight);
+    gap: var(--spacing-scale-2);
     border: 1px solid var(--color-border-default);
     border-radius: var(--radius-pill);
     background: var(--color-surface-subtle);
-    padding: var(--spacing-padding-control);
+    padding: var(--spacing-scale-3);
 
     .status-indicator {
-      width: var(--spacing-gap-tight);
+      width: var(--spacing-scale-2);
       aspect-ratio: 1;
       border-radius: 50%;
       background: var(--color-action-primary-default);

@@ -69,13 +69,13 @@ function RecipeListPage() {
 
   return (
     <section className="recipe-list-page">
-      <div className="flex flex-wrap items-end justify-between gap-default mb-section">
-        <div className="flex flex-col gap-tight">
+      <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
+        <div className="flex flex-col gap-2">
           <p className="overline">Your collection</p>
           <h1 className="text-display font-heading font-weight-emphasis">Saved recipes</h1>
         </div>
 
-        <div className="flex flex-wrap justify-end gap-compact">
+        <div className="flex flex-wrap justify-end gap-2">
           <Button variant="secondary" aria-label="Add a new recipe" onClick={() => navigate('/recipes/new')}>
             Add recipe
           </Button>
@@ -87,7 +87,7 @@ function RecipeListPage() {
         <p className="text-secondary">Loading your recipes...</p>
       ) : !hasSavedRecipes ? (
         <div
-          className="flex flex-col items-center justify-center gap-default border rounded-card bg-surface-subtle p-card text-center"
+          className="flex flex-col items-center justify-center gap-4 border rounded-card bg-surface-subtle p-4 text-center"
           aria-live="polite"
         >
           <h2 className="text-title">No recipes saved</h2>
@@ -97,27 +97,27 @@ function RecipeListPage() {
           <Button onClick={() => setIsGroupDialogOpen(true)}>Create group</Button>
         </div>
       ) : (
-        <div className="flex flex-col gap-default" aria-live="polite">
+        <div className="flex flex-col gap-4" aria-live="polite">
           {recipeGroups.map((group) => {
             return (
               <ExpansionPanel
                 key={group.id}
                 title={group.name}
                 headerAdornment={
-                  <span className="inline-flex items-center justify-center rounded-pill p-compact bg-surface-subtle text-primary text-caption font-weight-strong">
+                  <span className="inline-flex items-center justify-center rounded-pill p-2 bg-surface-subtle text-primary text-caption font-weight-strong">
                     {group.recipes.length}
                   </span>
                 }
               >
-                <ul className="flex flex-col gap-compact p-control">
+                <ul className="flex flex-col gap-2 p-3">
                   {group.recipes.length > 0 ? (
                     group.recipes.map((recipe) => (
-                      <li key={recipe} className="border rounded-control bg-surface-default p-control">
+                      <li key={recipe} className="border rounded-control bg-surface-default p-3">
                         {recipe}
                       </li>
                     ))
                   ) : (
-                    <li className="text-secondary py-compact">No recipes in this group yet.</li>
+                    <li className="text-secondary py-2">No recipes in this group yet.</li>
                   )}
                 </ul>
               </ExpansionPanel>

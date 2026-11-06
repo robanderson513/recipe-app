@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import Button from '@ui/Button';
 import { Input, Label } from '@form';
 
@@ -10,6 +11,8 @@ type RepeatableFieldProps = {
 };
 
 function RepeatableField({ label, addButtonText, placeholder, values, onChange }: RepeatableFieldProps) {
+  const fieldId = useId();
+
   const handleValueChange = (index: number, nextValue: string) => {
     const nextValues = [...values];
     nextValues[index] = nextValue;
@@ -26,23 +29,23 @@ function RepeatableField({ label, addButtonText, placeholder, values, onChange }
   };
 
   return (
-    <fieldset className="flex flex-col gap-default border rounded-card bg-surface-subtle p-card">
-      <h3>{label}</h3>
+    <fieldset className="flex flex-col gap-4 border rounded-card bg-surface-subtle p-4">
+      <legend className="font-weight-strong">{label}</legend>
       {values.map((value, index) => (
-        <div key={`${label}-${index}`} className="flex flex-col gap-default">
-          <div className="flex justify-between items-center gap-compact pb-compact">
-            <Label label={`${label} ${index + 1}`} htmlFor={`${label.toLowerCase()}-${index + 1}`} />
-
+        <div key={`${label}-${index}`} className="flex flex-col gap-1">
+          <div className="flex justify-between items-center gap-2">
+            <Label htmlFor={`${fieldId}-${index}`} label={`${label} ${index + 1}`} />
             <Button
               variant="text-neutral"
+              type="button"
               onClick={() => handleRemoveItem(index)}
               aria-label={`Remove ${label.toLowerCase()} ${index + 1}`}
             >
               Remove
             </Button>
           </div>
-
           <Input
+            id={`${fieldId}-${index}`}
             name={`${label.toLowerCase()}-${index + 1}`}
             value={value}
             placeholder={placeholder}
@@ -51,9 +54,11 @@ function RepeatableField({ label, addButtonText, placeholder, values, onChange }
         </div>
       ))}
 
-      <Button variant="secondary" onClick={handleAddItem}>
-        {addButtonText}
-      </Button>
+      <div className="flex justify-start">
+        <Button variant="tonal" type="button" onClick={handleAddItem}>
+          {addButtonText}
+        </Button>
+      </div>
     </fieldset>
   );
 }

@@ -41,7 +41,7 @@ function RecipeDetailForm({
   onCancel
 }: RecipeDetailFormProps) {
   return (
-    <form className="recipe-detail-form flex flex-col gap-section" onSubmit={onSubmit}>
+    <form className="recipe-detail-form flex flex-col gap-8" onSubmit={onSubmit}>
       <div className="field-group">
         <Input
           label="Recipe name"
@@ -107,7 +107,7 @@ function RecipeDetailForm({
         </p>
       )}
 
-      <div className="flex justify-end gap-compact">
+      <div className="flex justify-end gap-2">
         <Button variant="secondary" type="button" onClick={onCancel}>
           Cancel
         </Button>

@@ -1,7 +1,11 @@
 .dropdown-field {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-gap-tight);
+  gap: var(--spacing-scale-1);
+}
+
+.dropdown-field > label {
+  font-weight: var(--typography-font-weight-strong);
 }
 
 .dropdown-control {
@@ -11,7 +15,7 @@
 .dropdown-control::after {
   position: absolute;
   top: 50%;
-  right: var(--spacing-padding-control);
+  right: var(--spacing-scale-3);
   border-top: 6px solid var(--color-text-secondary);
   border-right: 6px solid transparent;
   border-left: 6px solid transparent;
@@ -24,23 +28,49 @@
   transform: translateY(-50%) rotate(180deg);
 }
 
+.dropdown-control:has(.dropdown[aria-invalid='true'])::after {
+  border-top-color: var(--color-state-invalid-foreground);
+}
+
+.dropdown-control:has(.dropdown:disabled)::after {
+  border-top-color: var(--color-state-disabled-foreground);
+}
+
 .dropdown {
   appearance: none;
   width: 100%;
+  min-height: 40px;
+  padding: var(--spacing-scale-2) var(--spacing-scale-3);
+  padding-right: calc(2 * var(--spacing-scale-3));
   border: 1px solid var(--color-border-default);
   border-radius: var(--radius-control);
   background: var(--color-surface-default);
-  padding: var(--spacing-padding-control);
-  padding-right: calc(2 * var(--spacing-padding-control));
+  color: var(--color-text-primary);
+  font: inherit;
   cursor: pointer;
+}
 
-  &:hover {
-    background: var(--color-state-hover-surface);
-    border-color: var(--color-state-hover-border);
-  }
+.dropdown:hover:not(:disabled):not([aria-invalid='true']) {
+  border-color: var(--color-border-strong);
+}
+
+.dropdown:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
 }
 
 .dropdown[aria-invalid='true'] {
-  border-color: var(--color-state-invalid-foreground);
-  background: var(--color-state-invalid-surface);
+  color: var(--color-state-invalid-foreground);
+  background-color: var(--color-state-invalid-surface);
+  border-color: var(--color-state-invalid-border);
+}
+
+.dropdown[aria-invalid='true']:focus-visible {
+  outline-color: var(--color-state-invalid-foreground);
+}
+
+.dropdown:disabled {
+  color: var(--color-state-disabled-foreground);
+  background-color: var(--color-state-disabled-surface);
+  border-color: var(--color-state-disabled-border);
 }

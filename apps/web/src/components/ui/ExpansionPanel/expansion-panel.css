@@ -8,7 +8,7 @@
 .expansion-panel-toggle {
   display: flex;
   align-items: center;
-  gap: var(--spacing-gap-tight);
+  gap: var(--spacing-scale-2);
   border: 0;
   padding: 0;
   background: transparent;

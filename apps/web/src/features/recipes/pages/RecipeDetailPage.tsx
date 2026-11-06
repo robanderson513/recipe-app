@@ -104,9 +104,9 @@ function RecipeDetailPage() {
   };
 
   return (
-    <section className="flex flex-col gap-section">
-      <div className="flex flex-wrap items-end justify-between gap-default mb-section">
-        <div className="flex flex-col gap-tight">
+    <section className="flex flex-col gap-8">
+      <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
+        <div className="flex flex-col gap-2">
           <p className="overline">Create</p>
           <h1 className="text-display font-heading font-weight-emphasis">Recipe detail</h1>
         </div>
